@@ -10,14 +10,22 @@ pipeline {
                 }
             }
             steps {
-                sh '''
+                if  (nodejs --version 2>/dev/null || rpm --version 2>/dev/null  || which node 2>/dev/null || which npm 2>/dev/null) {
+                     sh '''
                     ls -la
                     node --version
                     rpm --version
                     npm ci
                     npm run build
                     ls -la 
-                '''
+                    '''
+                } else {
+                    sh '''
+                    sudo dnf install nodejs npm -y
+                    exit 1
+                    '''
+                }
+               
             }
         }
     }
