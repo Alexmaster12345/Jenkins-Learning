@@ -20,11 +20,6 @@ pipeline {
                             npm run build
                             ls -la
                         '''
-                    } else {
-                        sh '''
-                            sudo dnf install node npm -y
-                        '''
-                        error 'Node.js was not installed. Please re-run the pipeline.'
                     }
                 }
             }
