@@ -30,20 +30,17 @@ pipeline {
                 stage('Unit Tests') {
                     steps {
                         sh 'echo Running unit tests...'
-                        // Add commands to run unit tests here
                     }
                 }
                 stage('Test') {
-                 steps {
-                sh 'test -f build/index.html'
-            }
-        }
-         stage('Integration Tests') {
                     steps {
-                        sh 'echo Running integration tests...'
-                        // Add commands to run integration tests here
+                        sh 'test -f build/index.html'
                     }
                 }
+                stage('Integration Tests') {
+                    steps {
+                        sh 'echo Running integration tests...'
+                    }
                 }
             }
         }
